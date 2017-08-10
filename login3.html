@@ -1,0 +1,111 @@
+
+<div id="container">
+
+    <form method="" action="" name="form">
+	<img src="img/wb_logo-big.png" alt="Umang" class="umang">
+	<br>
+	<h1><b>Login Form</b></h1>
+	<br>
+        <label for="name">Name: </label>
+        <input id="name" name="name" type="text">
+        <label for="username">Username: </label>
+        <input id="username" name="username" type="text">
+        <label id="email-label" for="email">E-mail adress: </label>
+        <input id="email" name="email" type="text" required>
+        <label id="password-label" for="password">Password : </label>
+        <input id="password" name="password" type="password">
+        <button type="button" id="submit" onclick="validate()">Submit</button>
+    </form>
+    <p id="result"></p>
+</div>
+<script>
+function validate() {
+    validateInput();
+}
+
+function validateInput() {
+    if (
+        document.form.name.value == "" ||
+        document.form.username.value == "" ||
+        document.form.email.value == "" ||
+        document.form.password.value == ""
+    ) {
+        alert("Please provide required information")
+    } else {
+        validatePassword();
+        validateEmail();
+    }
+}
+
+function validatePassword() {
+    var password = document.form.password.value;
+    if (password.length < 8) {
+	alert("Password is too short")
+        document.getElementById("password-label").innerHTML = "Password is too short";
+        document.getElementById("password-label").style.color = "#FF5722";
+    } else {
+        document.getElementById("password-label").innerHTML = "OK";
+        document.getElementById("password-label").style.color = "#76FF03";
+    }
+}
+
+function validateEmail() {
+    var email = document.form.email.value;
+    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (regex.test(email) == false) {
+	alert("Please Check your email adress")
+        document.getElementById("email-label").innerHTML = "Email is incorrect";
+        document.getElementById("email-label").style.color = "#FF5722";
+    } else {
+        document.getElementById("email-label").innerHTML = "OK";
+        document.getElementById("email-label").style.color = "#76FF03";
+    }
+}
+
+</script>
+<style >
+html {
+    font-family: Roboto;
+    background: #4FC3F7;
+}
+
+#container {
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+form {
+    width: 50%;
+    margin: 200px auto 0;
+    text-align: center;
+}
+
+input {
+    display: block;
+    border: none;
+    outline: none;
+    margin: 0 auto 15px;
+    height: 25px;
+}
+h1{
+align:center;
+color:black;}
+img.umang {
+    width: 50%;
+    border-radius: 25%;
+	align:center;
+}
+label {
+    color: black;
+}
+
+#submit {
+    background: #fff;
+    color:black;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px 15px;
+}
+</style>>
